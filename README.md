@@ -1,3 +1,2 @@
-# This is the template for poject 3
+# Boulder Bible
 
-## User is marco-ih-bcn
