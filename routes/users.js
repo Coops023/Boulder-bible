@@ -1,5 +1,6 @@
 var express = require("express");
 var router = express.Router();
+const mongoose = require("mongoose");
 
 const User = require("../models/User.model");
 const Service = require("../services/service");
@@ -78,15 +79,13 @@ router.get("/find/:userId", isAuthenticated, (req, res, next) => {
     return;
   }
   User.findById(userId)
-    .populate("Favorite", "title")
-    .populate("TriedInThePast", "title")
-    .populate("WantToTry", "title")
+
     .then((user) => res.status(200).json(user))
     .catch((error) => res.json(error));
 });
 
 //Put route to update a specific user
-router.put("/user/:userId", (req, res, next) => {
+router.put("/user/:userId", isAuthenticated, (req, res, next) => {
   const { userId } = req.params;
   const { username, email, password } = req.body;
   const salt = bcrypt.genSaltSync(saltRound);
@@ -121,7 +120,7 @@ router.put("/user/:userId", (req, res, next) => {
 });
 
 //Deletes a specified user by id
-router.delete("/delete/:userId", (req, res, next) => {
+router.delete("/delete/:userId", isAuthenticated, (req, res, next) => {
   const { userId } = req.params;
 
   if (!mongoose.Types.ObjectId.isValid(userId)) {
