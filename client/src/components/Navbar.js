@@ -24,7 +24,7 @@ function Navbar() {
             <button>Projects</button>
           </Link>
           <button>Logout</button>
-          <span>{user.name}</span>
+          <span>user.name</span>
         </>
       ) : (
         <>

@@ -56,7 +56,7 @@ router.post("/signup", (req, res) => {
       return User.create({ username, email, password: hashedPassword });
     })
     .then((createdUser) => {
-      console.log(req.payload);
+      console.log("line 59 user routes. payload", req.payload);
       // Deconstruct the newly created user object to omit the password
       // We should never expose passwords publicly
       const { username, email, _id } = createdUser;
