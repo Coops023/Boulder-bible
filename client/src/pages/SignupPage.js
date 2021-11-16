@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 const API_URL = "http://localhost:3000";
 
 function SignupPage(props) {
+  console.log("hello");
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
