@@ -3,11 +3,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import history from "../history";
+import { useNavigate } from "react-router-dom";
 
 const API_URL = "http://localhost:3000";
 
 function SignupPage(props) {
+  let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -27,7 +28,7 @@ function SignupPage(props) {
     // If the request resolves with an error, set the error message in the state
     axios
       .post(`${API_URL}/users/signup`, requestBody)
-      .then((response) => history.forward("/login"))
+      .then((response) => navigate("/login"))
       .catch((error) => {
         const errorDescription = error.response;
         setErrorMessage(errorDescription);
