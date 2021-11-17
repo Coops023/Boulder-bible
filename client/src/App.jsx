@@ -11,6 +11,7 @@ import {
   BrowserRouter,
 } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
+import AddClimb from "./components/AddClimb";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route exact path="/signup" element={<SignupPage />} />
         <Route exact path="/login" element={<LoginPage />} />
+        <Route exact path="/climb/add" element={<AddClimb />} />
       </Routes>
     </div>
   );
