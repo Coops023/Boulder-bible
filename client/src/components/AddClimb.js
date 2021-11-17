@@ -3,18 +3,28 @@ import { useState } from "react";
 import service from "../api/service";
 
 export default function AddClimb() {
-  const [imageUrl, setImageUrl] = useState("");
-  const [name, setName] = useState("");
-  const [typeOfClimb, setTypeOfClimb] = useState("");
-  const [stars, setStars] = useState("");
-  const [grade, setGrade] = useState("");
-  const [location, setLocation] = useState("");
-  const [description, setDescription] = useState("");
-  const [comments, setComments] = useState("");
+  //   const [imageUrl, setImageUrl] = useState("");
+  //   const [name, setName] = useState("");
+  //   const [typeOfClimb, setTypeOfClimb] = useState("");
+  //   const [stars, setStars] = useState("");
+  //   const [grade, setGrade] = useState("");
+  //   const [location, setLocation] = useState("");
+  //   const [description, setDescription] = useState("");
+  //   const [comments, setComments] = useState("");
+  const [state, setState] = useState({
+    title: "",
+    description: "",
+    imageUrl: "",
+  });
+
+  //   handleChange = e => {
+  //     const { name, value } = e.target;
+  //     this.setState({ [name]: value });
+  //   };
 
   // ******** this method handles just the file upload ********
   const handleFileUpload = (e) => {
-    // console.log("The file to be uploaded is: ", e.target.files[0]);
+    console.log("The file to be uploaded is: ", e.target.files[0]);
 
     const uploadData = new FormData();
 
@@ -25,9 +35,9 @@ export default function AddClimb() {
     service
       .handleUpload(uploadData)
       .then((response) => {
-        // console.log("response is: ", response);
+        console.log("response is: ", response);
         // after the console.log we can see that response carries 'secure_url' which we can use to update the state
-        setImageUrl(response.secure_url);
+        setState({ imageUrl: response.secure_url });
       })
       .catch((err) => console.log("Error while uploading the file: ", err));
   };
@@ -35,9 +45,9 @@ export default function AddClimb() {
   // this method submits the form
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    // console.log(imageUrl);
     service
-      .saveNewClimb(imageUrl)
+      .saveNewClimb(state)
       .then((res) => {
         console.log("added new climb: ", res);
         // here you would redirect to some other page

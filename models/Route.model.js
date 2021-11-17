@@ -2,26 +2,7 @@ const { Schema, model } = require("mongoose");
 
 const climbSchema = new Schema(
   {
-    imageUrl: {
-      type: String,
-    },
-    name: {
-      type: String,
-      // required: true,
-    },
-    typeOfClimb: {
-      type: String,
-      // required: true,
-    },
-    stars: {
-      type: String,
-      // required: true,
-    },
-    grade: {
-      type: String,
-      // required: true,
-    },
-    location: {
+    title: {
       type: String,
       // required: true,
     },
@@ -29,7 +10,7 @@ const climbSchema = new Schema(
       type: String,
       // required: true,
     },
-    comments: {
+    imageUrl: {
       type: String,
     },
   },
