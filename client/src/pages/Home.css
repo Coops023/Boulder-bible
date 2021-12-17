@@ -1,0 +1,39 @@
+.home-body {
+  display: flex;
+}
+
+.home-content {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  width: 60%;
+  height: 100vh;
+}
+
+h2 {
+  font-size: 1em;
+  width: 50%;
+}
+
+p {
+  width: 50%;
+  font-size: 0.8em;
+}
+
+.background-image {
+  display: flex;
+  background: linear-gradient(
+      0deg,
+      rgba(255, 0, 150, 0.6),
+      rgba(255, 0, 150, 0.6)
+    ),
+    url(https://images.unsplash.com/photo-1557685888-2d3621ddf615?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fHJvY2slMjBjbGltYmluZ3xlbnwwfHwwfHw%3D&w=1000&q=80);
+  width: 30%;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+@media screen {
+}

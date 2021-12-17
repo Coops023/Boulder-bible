@@ -21,7 +21,7 @@ const handleUpload = (file) => {
 
 const saveNewClimb = (newClimb) => {
   return service
-    .post("/climb/create", newClimb)
+    .post("/create", newClimb)
     .then((res) => res.data)
     .catch(errorHandler);
 };

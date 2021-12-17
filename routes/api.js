@@ -25,8 +25,9 @@ router.post("/upload", fileUploader.single("imageUrl"), (req, res, next) => {
 });
 
 // POST '/api/climb/create' => for saving a new climb in the database
-router.post("/climb/create", (req, res, next) => {
-  // console.log('body: ', req.body); ==> here we can see that all
+router.post("/create", (req, res, next) => {
+  console.log("body: ", req.body);
+  // ==> here we can see that all
   // the fields have the same names as the ones in the model so we can simply pass
   // req.body to the .create() method
 

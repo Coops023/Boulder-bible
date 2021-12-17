@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import AddClimb from "./components/AddClimb";
+import Home from "./pages/Home";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Navbar />
 
       <Routes>
+        <Route exact path="/" element={<Home />} />
         <Route exact path="/signup" element={<SignupPage />} />
         <Route exact path="/login" element={<LoginPage />} />
         <Route exact path="/climb/add" element={<AddClimb />} />
