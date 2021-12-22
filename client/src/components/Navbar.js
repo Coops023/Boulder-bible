@@ -7,7 +7,7 @@ import { AuthContext } from "../context/auth.context"; // <== IMPORT
 function Navbar() {
   // Subscribe to the AuthContext to gain access to
   // the values from AuthContext.Provider `value` prop
-  const { isLoggedIn, user } = useContext(AuthContext); // <== ADD
+  const { isLoggedIn, user, logOutUser } = useContext(AuthContext); // <== ADD
 
   //  Update the rendering logic to display different content
   //  depending on the user being logged in or not
@@ -17,15 +17,13 @@ function Navbar() {
         <button>Home</button>
       </Link>
 
-      {/*    UPDATE     */}
       {isLoggedIn ? (
         <>
           <Link to="/climb/add">
-            <button>Add routes</button>
+            <button>Add route</button>
           </Link>
-
-          <button>Logout</button>
-          <span>user.name</span>
+          <button onClick={logOutUser}>Logout</button> {/*  <== UPDATE   */}
+          <span>{user.name}</span>
         </>
       ) : (
         <>

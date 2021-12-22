@@ -180,7 +180,7 @@ router.post("/login", (req, res, next) => {
     .catch((err) => res.status(500).json({ message: "Internal Server Error" }));
 });
 
-router.get("/verify", isAuthenticated, (req, res, next) => {
+router.get("/verify", (req, res, next) => {
   // <== CREATE NEW ROUTE
 
   // If JWT token is valid the payload gets decoded by the
