@@ -138,7 +138,7 @@ router.delete("/delete/:userId", isAuthenticated, (req, res, next) => {
 // POST  /auth/login - Verifies email and password and returns a JWT
 router.post("/login", (req, res, next) => {
   const { email, password } = req.body;
-  //  console.log("line 122", email, password)
+  console.log("line 122", email, password);
   // Check if email or password are provided as empty string
   if (email === "" || password === "") {
     res.status(400).json({ message: "Provide email and password." });
@@ -148,7 +148,7 @@ router.post("/login", (req, res, next) => {
   // Check the users collection if a user with the same email exists
   User.findOne({ email })
     .then((foundUser) => {
-      // console.log('line 132', foundUser)
+      console.log("line 132", foundUser);
       if (!foundUser) {
         // If the user is not found, send an error response
         res.status(401).json({ message: "User not found." });

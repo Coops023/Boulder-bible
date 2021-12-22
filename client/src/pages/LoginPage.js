@@ -19,7 +19,7 @@ function LoginPage(props) {
     const requestBody = { email, password };
 
     axios
-      .post(`${API_URL}/auth/login`, requestBody)
+      .post(`${API_URL}/users/login`, requestBody)
       .then((response) => {
         console.log("JWT token", response.data.authToken);
       })

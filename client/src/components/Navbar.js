@@ -20,9 +20,10 @@ function Navbar() {
       {/*    UPDATE     */}
       {isLoggedIn ? (
         <>
-          <Link to="/projects">
-            <button>Projects</button>
+          <Link to="/climb/add">
+            <button>Add routes</button>
           </Link>
+
           <button>Logout</button>
           <span>user.name</span>
         </>
