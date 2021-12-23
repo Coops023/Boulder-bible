@@ -9,6 +9,7 @@ export default function AddClimb() {
   let navigate = useNavigate();
   const [imageUrl, setImageUrl] = useState("");
   const [title, setTitle] = useState("");
+  const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
@@ -37,11 +38,15 @@ export default function AddClimb() {
     setDescription(e.target.value);
   };
 
+  const handleLocationChange = (e) => {
+    setLocation(e.target.value);
+  };
+
   // this method submits the form
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const requestBody = { title, description, imageUrl };
+    const requestBody = { title, location, description, imageUrl };
 
     // axios
     //   .post(`${API_URL}/create`, requestBody)
@@ -62,6 +67,7 @@ export default function AddClimb() {
       );
 
     setTitle("");
+    setLocation("");
     setImageUrl("no file chosen");
     setDescription("");
   };
@@ -89,11 +95,19 @@ export default function AddClimb() {
         /> */}
 
         <input type="file" onChange={handleFileUpload} />
+        <label>Title</label>
         <input
           type="text"
           name="title"
           value={title}
           onChange={handleTitleChange}
+        />
+        <label>Location</label>
+        <input
+          type="text"
+          name="location"
+          value={location}
+          onChange={handleLocationChange}
         />
         <label>Description</label>
         <input

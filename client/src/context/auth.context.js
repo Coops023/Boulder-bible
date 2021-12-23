@@ -24,14 +24,11 @@ function AuthProviderWrapper(props) {
           headers: { Authorization: `Bearer ${storedToken}` },
         })
         .then((response) => {
-          console.log("Auth context 33", isLoggedIn);
           // If the server verifies that JWT token is valid
           const user = response.data;
           setUser(user);
           setIsLoggedIn(true);
           setIsLoading(false);
-
-          console.log("Auth context 33", isLoggedIn);
         })
         .catch((error) => {
           // If the server sends an error response (invalid token)

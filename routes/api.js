@@ -2,8 +2,10 @@ var express = require("express");
 var router = express.Router();
 
 const Climb = require("../models/Route.model");
-
+const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
 const fileUploader = require("../config/cloudinary");
+const mapBoxToken = process.env.MAPBOX_TOKEN;
+const geocoder = mbxGeocoding({ accessToken: mapBoxToken });
 
 /* GET users listing. */
 router.get("/climbs", function (req, res, next) {
@@ -25,15 +27,22 @@ router.post("/upload", fileUploader.single("imageUrl"), (req, res, next) => {
 });
 
 // POST '/api/climb/create' => for saving a new climb in the database
-router.post("/create", (req, res, next) => {
+router.post("/create", async (req, res, next) => {
   console.log("body: ", req.body);
   // ==> here we can see that all
   // the fields have the same names as the ones in the model so we can simply pass
   // req.body to the .create() method
+  const geoData = await geocoder
+    .forwardGeocode({
+      query: "Amsterdam, NL",
+      limit: 1,
+    })
+    .send();
+
+  console.log(geoData.body.features[0].geometry.coordinates);
 
   Climb.create(req.body)
     .then((newClimb) => {
-      // console.log('Created new movie: ', newlyCreatedMovieFromDB);
       res.status(200).json(newClimb);
     })
     .catch((err) => next(err));
