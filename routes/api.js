@@ -34,14 +34,20 @@ router.post("/create", async (req, res, next) => {
   // req.body to the .create() method
   const geoData = await geocoder
     .forwardGeocode({
-      query: "Amsterdam, NL",
+      query: req.body.location,
       limit: 1,
     })
     .send();
 
-  console.log(geoData.body.features[0].geometry.coordinates);
+  // console.log(geoData.body.features[0].geometry.coordinates);
 
-  Climb.create(req.body)
+  Climb.create({
+    title: req.body.title,
+    location: req.body.location,
+    description: req.body.description,
+    imageUrl: req.body.imageUrl,
+    geometry: geoData.body.features[0].geometry,
+  })
     .then((newClimb) => {
       res.status(200).json(newClimb);
     })
